@@ -1,0 +1,244 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-display: "Fraunces", serif;
+  --font-body: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-hover: var(--primary-hover);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --shadow-visceral: 0 20px 50px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 20px color-mix(in oklab, var(--primary) 30%, transparent);
+}
+
+:root {
+  --radius: 0px; /* Resn style is often sharp or extreme */
+  
+  /* Resn Light: Off-white/Beige editorial feel */
+  --background: #f4f1ea;
+  --foreground: #0a0a0a;
+  --surface: #e9e5db;
+  --surface-2: #dfdbd1;
+  --surface-3: #d5d1c7;
+  --card: var(--surface);
+  --card-foreground: var(--foreground);
+  --popover: var(--surface);
+  --popover-foreground: var(--foreground);
+  --primary: #ff3e00; /* Resn electric orange */
+  --primary-foreground: #ffffff;
+  --primary-hover: #e63700;
+  --secondary: var(--surface-3);
+  --secondary-foreground: var(--foreground);
+  --muted: var(--surface-2);
+  --muted-foreground: #666666;
+  --accent: #00ff66; /* Resn electric green */
+  --accent-foreground: #000000;
+  --destructive: #ff0000;
+  --destructive-foreground: #ffffff;
+  --border: #dfdbd1;
+  --input: #e9e5db;
+  --ring: #ff3e00;
+}
+
+.dark {
+  /* Resn Dark: Deep Midnight Ink */
+  --background: #08080a;
+  --foreground: #f4f1ea;
+  --surface: #121214;
+  --surface-2: #1a1a1c;
+  --surface-3: #222224;
+  --card: var(--surface);
+  --card-foreground: var(--foreground);
+  --popover: var(--surface-2);
+  --popover-foreground: var(--foreground);
+  --primary: #ff3e00;
+  --primary-foreground: #ffffff;
+  --primary-hover: #e63700;
+  --secondary: var(--surface-3);
+  --secondary-foreground: var(--foreground);
+  --muted: var(--surface-2);
+  --muted-foreground: #888888;
+  --accent: #00ff66;
+  --accent-foreground: #000000;
+  --destructive: #ff3e00;
+  --destructive-foreground: #ffffff;
+  --border: #1a1a1c;
+  --input: #121214;
+  --ring: #ff3e00;
+}
+
+/* Kids Mode Theme */
+body.is-kids {
+  --primary: #9d50bb; /* Vibrant Purple */
+  --primary-hover: #b19cd9;
+  --accent: #f06292; /* Playful Pink */
+  --background: #1a0b2e; /* Deep Purple Night */
+  --surface: #2d1b4d;
+  --surface-2: #3e2b61;
+  --surface-3: #4e3b75;
+  --foreground: #ffffff;
+  --border: #3e2b61;
+}
+
+body.is-kids .resn-grain {
+  opacity: 0.08;
+  background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
+}
+
+body.is-kids .font-display {
+  font-style: normal !important;
+  letter-spacing: 0.05em;
+  text-transform: capitalize;
+}
+
+@layer base {
+  @import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Space+Grotesk:wght@300..700&family=JetBrains+Mono:wght@400;700&display=swap");
+
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    background-color: var(--color-background);
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.5s cubic-bezier(0.16, 1, 0.3, 1), color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow-x: hidden;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-display {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-kerning: -0.05em;
+    line-height: 0.9;
+  }
+}
+
+@layer utilities {
+  .resn-grain {
+    position: fixed;
+    top: -150%;
+    left: -150%;
+    width: 400%;
+    height: 400%;
+    background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+    opacity: 0.04;
+    pointer-events: none;
+    z-index: 9999;
+    animation: grain 8s steps(10) infinite;
+  }
+
+  @keyframes grain {
+    0%, 100% { transform:translate(0, 0) }
+    10% { transform:translate(-5%, -10%) }
+    20% { transform:translate(-15%, 5%) }
+    30% { transform:translate(7%, -25%) }
+    40% { transform:translate(-5%, 25%) }
+    50% { transform:translate(-15%, 10%) }
+    60% { transform:translate(15%, 0%) }
+    70% { transform:translate(0%, 15%) }
+    80% { transform:translate(3%, 35%) }
+    90% { transform:translate(-10%, 10%) }
+  }
+
+  .text-reveal {
+    overflow: hidden;
+  }
+  .text-reveal span {
+    display: inline-block;
+    transform: translateY(110%);
+    animation: reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  @keyframes reveal {
+    to { transform: translateY(0); }
+  }
+
+  .magnetic-btn {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .magnetic-btn:hover {
+    transform: scale(1.05) rotate(-1deg);
+  }
+
+  .liquid-mask {
+    mask-image: radial-gradient(circle, black 100%, transparent 100%);
+    mask-size: 100% 100%;
+    transition: mask-size 0.5s ease;
+  }
+
+  .text-shadow-hero {
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+  .text-shadow-strong {
+    text-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+  }
+  .gradient-fade-bottom {
+    background: linear-gradient(to top, var(--color-background) 0%, transparent 100%);
+  }
+  .gradient-overlay-hero {
+    background: linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0) 100%);
+  }
+  .vignette-hero {
+    box-shadow: inset 0 0 200px rgba(0,0,0,0.9);
+  }
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .glass-dark {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .mask-fade-right {
+    mask-image: linear-gradient(to right, black 85%, transparent 100%);
+  }
+  .mask-fade-left {
+    mask-image: linear-gradient(to left, black 85%, transparent 100%);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+}
