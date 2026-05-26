@@ -16,7 +16,7 @@ To deploy this application to Vercel, follow these steps:
 4.  **Build Settings**:
     *   **Framework Preset**: Vite (should be auto-detected).
     *   **Build Command**: `npm run build`
-    *   **Output Directory**: `.output/public`
+    *   **Output Directory**: `dist/client`
     *   **Install Command**: `npm install` (or `bun install` if using Bun)
 5.  **Deploy**: Vercel will build and deploy your application.
 
